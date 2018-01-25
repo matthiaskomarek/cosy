@@ -1,0 +1,25 @@
+{
+	"devDependencies": {
+		"@storybook/addon-actions": "^3.3.9",
+		"@storybook/addon-knobs": "^3.3.9",
+		"@storybook/react": "^3.3.9",
+		"babel-core": "^6.26.0",
+		"backstopjs": "^3.0.37",
+		"css-loader": "^0.28.9",
+		"glob-loader": "^0.3.0",
+		"lerna": "^2.5.1",
+		"node-sass": "^4.7.2",
+		"remove-scope": "^1.0.2",
+		"rollup": "0.55.0",
+		"rollup-plugin-babel": "^3.0.3",
+		"sass-loader": "^6.0.6",
+		"style-loader": "^0.19.1"
+	},
+	"dependencies": {
+		"react": "^16.2.0",
+		"react-dom": "^16.2.0"
+	},
+	"scripts": {
+		"start": "NODE_ENV=development start-storybook -p 9008 -c .storybook"
+	}
+}

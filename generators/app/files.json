@@ -1,0 +1,12 @@
+{
+  "static": [
+    "_.babelrc",
+    "_.editorconfig",
+    "_.gitignore",
+    "lerna.json",
+    "package.json",
+    "rollup.config.js"
+  ],
+  "templates": [
+  ]
+}
