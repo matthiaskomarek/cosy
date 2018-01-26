@@ -5,16 +5,17 @@ const path = require('path');
 const rootFolder = path.join(process.cwd());
 const libNameWithScope = require(path.join(rootFolder, 'package.json')).name;
 const libName = removeScope(libNameWithScope);
+const libNameFile = libName.replace(/\./g, '_');
 const distFolder = path.join(rootFolder, 'dist');
 
 export default {
   input: path.join(rootFolder, `index.js`),
   output: [{
-    file: path.join(distFolder, `${libName}.umd.js`),
+    file: path.join(distFolder, `${libNameFile}.umd.js`),
     format: 'umd'
   },
     {
-      file: path.join(distFolder, `${libName}.js`),
+      file: path.join(distFolder, `${libNameFile}.js`),
       format: 'es'
     }
   ],

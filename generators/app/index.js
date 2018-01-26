@@ -1,9 +1,8 @@
 const Generator = require('yeoman-generator');
+const mkdirp = require('mkdirp');
 
 module.exports = class extends Generator {
-  constructor(args, opts) {
-    super(args, opts);
-
+  initializing() {
     this.props = {};
   }
 
@@ -36,6 +35,10 @@ module.exports = class extends Generator {
     });
 
     this.fs.copy(this.templatePath('.storybook'), this.destinationPath('.storybook'));
-    this.fs.copy(this.templatePath('packages'), this.destinationPath('packages'));
+    mkdirp.sync(this.destinationPath('packages'));
+  }
+
+  install() {
+    this.installDependencies({bower: false});
   }
 };

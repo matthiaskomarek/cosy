@@ -1,7 +1,7 @@
 {
   "name": "generator-cosy",
   "version": "0.1.0",
-  "description": "",
+  "description": "A yeoman generator for creating a frontend COmponent SYstem",
   "files": [
     "generators"
   ],
@@ -9,6 +9,10 @@
     "yeoman-generator"
   ],
   "dependencies": {
+    "glob": "7.1.2",
+    "lodash": "4.17.4",
+    "mkdirp": "0.5.1",
+    "remove-scope": "^1.0.2",
     "yeoman-generator": "2.0.2"
   }
 }

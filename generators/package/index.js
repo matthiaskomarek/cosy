@@ -1,9 +1,11 @@
 const Generator = require('yeoman-generator');
+const glob = require('glob');
+const path = require('path');
+const _ = require('lodash');
+const {removeScope} = require('remove-scope');
 
 module.exports = class extends Generator {
-  constructor(args, opts) {
-    super(args, opts);
-
+  initializing() {
     this.props = {};
   }
 
@@ -12,27 +14,51 @@ module.exports = class extends Generator {
   };
 
   prompting() {
-    return this.prompt([{
-      type    : 'input',
-      name    : 'packageName',
-      message : 'Name of your package'
-    }])
+    // ask for package name
+    // check if scoped is set
+    // ask for component name
+    return this.prompt([
+      {
+        type    : 'input',
+        name    : 'packageName',
+        message : 'Name of your package (e.g. @scope/package-name)'
+      },
+      {
+        type    : 'input',
+        name    : 'componentName',
+        message : 'Name of your component (e.g. Button)'
+      }])
       .then((answers) => {
-        this.props.packageName = answers.name;
+        this.props.packageName = answers.packageName;
+        this.props.componentName = answers.componentName;
+
+        // convert to snakecase
+        this.props.packageBundleName = _.snakeCase(removeScope(answers.packageName));
       });
   }
 
   writing() {
-    const files = require('./files.json');
+    console.log(this.templatePath('_ComponentName'));
 
-    files.static.forEach((file) => {
-      this.fs.copy(
-        this.templatePath(file),
-        this.destinationPath(this._stripLeadingLoDash(file))
-      );
+    const options = {nodir: true};
+
+// options is optional
+    glob(`${this.templatePath()}/**/*`, options, (er, files) => {
+
+      files.forEach((file) => {
+        // split for template
+        const newFile = file
+          .split(this.templatePath() + '/')[1]
+          .replace(/_ComponentName/g, this.props.componentName);
+
+
+        const destinationPath = path.join(this.destinationPath(), 'packages', newFile);
+
+        console.log('COPY', file, destinationPath);
+
+
+        this.fs.copyTpl(file, destinationPath, this.props);
+      });
     });
-
-    this.fs.copy(this.templatePath('.storybook'), this.destinationPath('.storybook'));
-    this.fs.copy(this.templatePath('packages'), this.destinationPath('packages'));
   }
 };

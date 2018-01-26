@@ -1,0 +1,12 @@
+{
+  "name": "<%= packageName %>",
+  "version": "0.0.0",
+  "main": "./dist/<%= packageBundleName %>.umd.js",
+  "module": "./dist/<%= packageBundleName %>.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
+    "build": "BABEL_ENV=build rollup --config ../../rollup.config.js",
+    "prepublishOnly": "npm run build"
+  }
+}
