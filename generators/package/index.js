@@ -9,10 +9,6 @@ module.exports = class extends Generator {
     this.props = {};
   }
 
-  _stripLeadingLoDash(name) {
-    return name.indexOf('_') === 0 ? name.substring(1) : name;
-  };
-
   prompting() {
     // ask for package name
     // check if scoped is set
@@ -53,8 +49,6 @@ module.exports = class extends Generator {
 
 
         const destinationPath = path.join(this.destinationPath(), 'packages', newFile);
-
-        console.log('COPY', file, destinationPath);
 
 
         this.fs.copyTpl(file, destinationPath, this.props);
