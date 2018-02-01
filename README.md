@@ -5,7 +5,7 @@
   <br>
 </h2>
 <p align="center" style="font-size: 1.2rem;">A Yeoman Generator for your <strong>CO</strong>mponent <strong>SY</strong>stem.<br> Creates a Lerna Project with Storybook, React, Jest, Rollup Bundle, Visual Regression Tests and more coming soon!</p>
-[![npm (scoped)](https://img.shields.io/npm/v/generator-cosy.svg)]() [![node (scoped)](https://img.shields.io/node/v/generator-cosy.svg)]() [![npm](https://img.shields.io/npm/l/generator-cosy.svg)]()
+<img src="https://img.shields.io/npm/v/generator-cosy.svg" alt="npm version">
 # Usage
 
 ## Create your project
