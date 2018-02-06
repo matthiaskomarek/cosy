@@ -4,5 +4,10 @@
     "targets": {
       "browsers": ["last 2 versions", "ie > 10"]
     }
-  }]]
+  }]],
+  "env": {
+    "test": {
+        "presets": [["env"], "react"]
+      }
+    }
 }

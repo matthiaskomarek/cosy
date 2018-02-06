@@ -5,7 +5,8 @@
     "_.gitignore",
     "lerna.json",
     "package.json",
-    "rollup.config.js"
+    "rollup.config.js",
+    "Storyshots.test.js"
   ],
   "templates": [
   ]
