@@ -18,6 +18,21 @@ module.exports = class extends Generator {
         message : 'Your COSY project name',
         default : this.appname // Default to current folder name
       },
+      {
+        type: 'confirm',
+        name: 'useScopedPackages',
+        message: 'Do you want to use npm @scoped packages?',
+        default: true,
+        store: true
+      },
+      {
+        when: (answers) => answers.useScopedPackages,
+        type: 'input',
+        name: 'packageScope',
+        message: 'NPM @scope for your packages (e.g. @cosy)',
+        store: true,
+        validate: (input) => input.startsWith('@') || 'Scope name needs to start with an @'
+      }
       // {
       //   type: 'confirm',
       //   name: 'eslintJsxA11y',

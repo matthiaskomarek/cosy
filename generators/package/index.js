@@ -7,6 +7,7 @@ const {removeScope} = require('remove-scope');
 module.exports = class extends Generator {
   initializing() {
     this.props = {};
+    this.props.packageScope = _.get(this.config.getAll(), 'promptValues.packageScope', null);
   }
 
   prompting() {
@@ -17,7 +18,7 @@ module.exports = class extends Generator {
       {
         type    : 'input',
         name    : 'packageName',
-        message : 'Name of your package (e.g. @scope/package-name)'
+        message : 'Name of your package (package-name)'
       },
       {
         type    : 'input',
@@ -25,7 +26,9 @@ module.exports = class extends Generator {
         message : 'Name of your component (e.g. Button)'
       }])
       .then((answers) => {
-        this.props.packageName = answers.packageName;
+        this.props.packageName = this.props.packageScope ?
+          this.props.packageScope + '/' + answers.packageName : answers.packageName;
+
         this.props.componentName = answers.componentName;
 
         // convert to snakecase
