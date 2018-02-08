@@ -1,9 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const <%= componentName %> = (props = {}) => {
+const <%= componentName %> = (props) => {
   return (
-    <div>It works</div>
+    <div {...props}>It works</div>
   )
+};
+
+<%= componentName %>.propTypes = {
+  type: PropTypes.string
+};
+
+<%= componentName %>.defaultProps = {
+  type: 'button'
 };
 
 export default <%= componentName %>;
