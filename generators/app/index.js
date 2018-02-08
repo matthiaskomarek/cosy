@@ -11,16 +11,23 @@ module.exports = class extends Generator {
   };
 
   prompting() {
-    return this.prompt([{
-      type    : 'input',
-      name    : 'name',
-      message : 'Your COSY project name',
-      default : this.appname // Default to current folder name
-    }])
+    return this.prompt([
+      {
+        type    : 'input',
+        name    : 'projectName',
+        message : 'Your COSY project name',
+        default : this.appname // Default to current folder name
+      },
+      // {
+      //   type: 'confirm',
+      //   name: 'eslintJsxA11y',
+      //   message: 'Do you want eslint-jsx-a11y support?',
+      //   default: true
+      // }
+      ])
       .then((answers) => {
-        this.props.projectName = answers.name;
-        this.log('app name', answers.name);
-        this.log('cool feature', answers.cool);
+        this.props = answers;
+        // this.log('app name', answers.name);
       });
   }
 
@@ -36,6 +43,19 @@ module.exports = class extends Generator {
 
     this.fs.copy(this.templatePath('.storybook'), this.destinationPath('.storybook'));
     mkdirp.sync(this.destinationPath('packages'));
+
+    // update package.json
+    // const packageJson = require('./templates/package.json');
+    // const eslintJson = require('./templates/_.eslintrc.json');
+    //
+    // if (this.props.eslintJsxA11y) {
+    //   packageJson.devDependencies['eslint-plugin-jsx-a11y'] = '6.0.2';
+    //   eslintJson.extends.push('plugin:jsx-a11y/recommended');
+    // }
+    //
+    // this.fs.writeJSON(this.destinationPath('package.json'), packageJson);
+    // this.fs.writeJSON(this.destinationPath('.eslintrc.json'), eslintJson);
+
   }
 
   install() {
