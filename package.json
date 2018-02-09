@@ -1,6 +1,6 @@
 {
   "name": "generator-cosy",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "A yeoman generator for creating a frontend COmponent SYstem",
   "files": [
     "generators"
@@ -15,5 +15,11 @@
     "remove-scope": "^1.0.2",
     "yeoman-generator": "2.0.2"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "standard-version": "^4.3.0"
+  },
+  "scripts": {
+    "release": "standard-version"
+  }
 }
