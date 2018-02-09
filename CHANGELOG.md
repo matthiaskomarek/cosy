@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-* **cosy:package:** set correct propTypes with default values ([d12e767](https://github.com/matthiaskomarek/cosy/commit/d12e767))
+* **generator-package:** set correct propTypes with default values ([d12e767](https://github.com/matthiaskomarek/cosy/commit/d12e767))
 
 
 
