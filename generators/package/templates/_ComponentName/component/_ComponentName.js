@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 
 const <%= componentName %> = (props) => {
   return (
-    <div {...props}>It works</div>
+    <div {...props}>{props.text}</div>
   )
 };
 
 <%= componentName %>.propTypes = {
-  type: PropTypes.string
+  text: PropTypes.string
 };
 
 <%= componentName %>.defaultProps = {
-  type: 'button'
+  text: 'It works!'
 };
 
 export default <%= componentName %>;
