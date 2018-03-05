@@ -60,8 +60,6 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    console.log(this.templatePath('_ComponentName'));
-
     const options = {nodir: true};
 
     glob(`${this.templatePath()}/**/*`, options, (er, files) => {
