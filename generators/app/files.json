@@ -3,8 +3,6 @@
     "_.babelrc",
     "_.editorconfig",
     "_.gitignore",
-    "lerna.json",
-    "package.json",
     "_.eslintrc.json",
     "rollup.config.js",
     "Storyshots.test.js"

@@ -13,7 +13,11 @@
 
 Install the required tools and generator: `yo`, `generator-cosy`
 ```
+// npm
 npm install -g yo generator-cosy
+
+// yarn
+yarn global add yo generator-cosy
 ```
 
 Make a new directory, and `cd` into it:
@@ -25,3 +29,23 @@ Run `yo cosy` to setup your component system folder structure
 ```
 yo cosy
 ```
+
+## Questions the generator will ask
+
+1. Your project name
+2. Do you want to use `@scoped` npm package names
+3. Package scope name (only if previous question is true, will use `@scope` as prefix for your packages)
+4. Do you want to use yarn?
+5. Do you want to use yarn workspaces (only if previous question is true)
+
+## Subgenerators
+
+```
+yo cosy:package <component-name>
+```
+
+Generates a new component as package.
+If you have specified a `@scope`, this subgenerator will use the package scope as prefix for your new created package name.
+
+You can omit the `<component-name>` part on the cli, the generator will than ask for your component name.
+

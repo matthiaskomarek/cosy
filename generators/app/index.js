@@ -32,6 +32,19 @@ module.exports = class extends Generator {
         message: 'NPM @scope for your packages (e.g. @cosy)',
         store: true,
         validate: (input) => input.startsWith('@') || 'Scope name needs to start with an @'
+      },
+      {
+        type: 'confirm',
+        name: 'useYarn',
+        message: 'Do you want to use yarn instead of npm?',
+        default: true
+      },
+      {
+        when: (answers) => answers.useYarn,
+        type: 'confirm',
+        name: 'useYarnWorkspaces',
+        message: 'Do you want to use yarn workspaces?',
+        default: true
       }
       // {
       //   type: 'confirm',
@@ -42,7 +55,6 @@ module.exports = class extends Generator {
       ])
       .then((answers) => {
         this.props = answers;
-        // this.log('app name', answers.name);
       });
   }
 
@@ -60,7 +72,19 @@ module.exports = class extends Generator {
     mkdirp.sync(this.destinationPath('packages'));
 
     // update package.json
-    // const packageJson = require('./templates/package.json');
+    const packageJson = require('./templates/package.json');
+    const lernaJson = require('./templates/lerna.json');
+
+    if (this.props.useYarn) {
+      lernaJson.npmClient = 'yarn';
+
+      if (this.props.useYarnWorkspaces) {
+        lernaJson.useYarnWorkspaces = true;
+
+        packageJson.workspaces = ['packages/*'];
+        packageJson.private = true;
+      }
+    }
     // const eslintJson = require('./templates/_.eslintrc.json');
     //
     // if (this.props.eslintJsxA11y) {
@@ -68,12 +92,13 @@ module.exports = class extends Generator {
     //   eslintJson.extends.push('plugin:jsx-a11y/recommended');
     // }
     //
-    // this.fs.writeJSON(this.destinationPath('package.json'), packageJson);
+    this.fs.writeJSON(this.destinationPath('package.json'), packageJson);
+    this.fs.writeJSON(this.destinationPath('lerna.json'), packageJson);
     // this.fs.writeJSON(this.destinationPath('.eslintrc.json'), eslintJson);
 
   }
 
   install() {
-    this.installDependencies({bower: false});
+    this.installDependencies({bower: false, yarn: this.props.useYarn});
   }
 };
