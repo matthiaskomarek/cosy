@@ -47,6 +47,12 @@ module.exports = class extends Generator {
           return true;
         }
       },
+      {
+        type: 'list',
+        name: 'atomicType',
+        message: 'Atomic Design Stage',
+        choices: ['Atom', 'Molecule', 'Organism', 'Template', 'Page']
+      }
       ])
       .then((answers) => {
         this.props.packageName = this.props.packageScope ?
@@ -56,6 +62,7 @@ module.exports = class extends Generator {
 
         // convert to snakecase
         this.props.packageBundleName = _.kebabCase(removeScope(answers.packageName));
+        this.props.atomicType = answers.atomicType;
       });
   }
 

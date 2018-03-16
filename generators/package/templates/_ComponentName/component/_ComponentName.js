@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {cosyMeta} from '../package.json';
 
 const <%= componentName %> = (props) => {
+  // merge default data from package.json into props
+  props = Object.assign({}, cosyMeta.defaultData, props);
+
   return (
     <div {...props}>{props.text}</div>
   )
@@ -9,10 +13,6 @@ const <%= componentName %> = (props) => {
 
 <%= componentName %>.propTypes = {
   text: PropTypes.string
-};
-
-<%= componentName %>.defaultProps = {
-  text: 'It works!'
 };
 
 export default <%= componentName %>;

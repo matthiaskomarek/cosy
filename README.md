@@ -49,3 +49,9 @@ If you have specified a `@scope`, this subgenerator will use the package scope a
 
 You can omit the `<component-name>` part on the cli, the generator will than ask for your component name.
 
+#### Questions
+
+1. Component name (only if not specified as cli argument)
+2. Package name
+3. Atomic design stage (Atom, Molecules, Organism, Template, Page)
+

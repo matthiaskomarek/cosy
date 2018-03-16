@@ -1,13 +1,16 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { withReadme } from 'storybook-readme';
+import { withKnobs } from '@storybook/addon-knobs/react';
+import { cosyMeta } from './package.json';
+
+import Readme from './README.md';
 
 import { <%= componentName %> } from './index';
 
-const stories = storiesOf('<%= componentName %>', module);
-
-// Add the `withKnobs` decorator to add knobs support to your stories.
-// You can also configure `withKnobs` as a global decorator.
-// stories.addDecorator(withKnobs);
+const stories = storiesOf(`${cosyMeta.type}|<%= componentName %>`, module)
+  .addDecorator(withReadme(Readme))
+  .addDecorator(withKnobs);
 
 stories
   .add('simple story for <%= componentName %>', () => (

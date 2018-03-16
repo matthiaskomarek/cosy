@@ -3,6 +3,7 @@ const mkdirp = require('mkdirp');
 
 module.exports = class extends Generator {
   initializing() {
+
     this.props = {};
   }
 
@@ -69,6 +70,8 @@ module.exports = class extends Generator {
     });
 
     this.fs.copy(this.templatePath('.storybook'), this.destinationPath('.storybook'));
+    this.fs.copy(this.templatePath('utils'), this.destinationPath('utils'));
+
     mkdirp.sync(this.destinationPath('packages'));
 
     // update package.json
@@ -93,12 +96,12 @@ module.exports = class extends Generator {
     // }
     //
     this.fs.writeJSON(this.destinationPath('package.json'), packageJson);
-    this.fs.writeJSON(this.destinationPath('lerna.json'), packageJson);
+    this.fs.writeJSON(this.destinationPath('lerna.json'), lernaJson);
     // this.fs.writeJSON(this.destinationPath('.eslintrc.json'), eslintJson);
 
   }
 
   install() {
-    this.installDependencies({bower: false, yarn: this.props.useYarn});
+    this.installDependencies({bower: false, yarn: this.props.useYarn, npm: !this.props.useYarn});
   }
 };

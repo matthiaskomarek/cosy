@@ -4,7 +4,7 @@
     "_.editorconfig",
     "_.gitignore",
     "_.eslintrc.json",
-    "rollup.config.js",
+    "build.js",
     "Storyshots.test.js"
   ],
   "templates": [
