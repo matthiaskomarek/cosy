@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.9.0"></a>
+# [0.9.0](https://github.com/matthiaskomarek/cosy/compare/v0.8.1...v0.9.0) (2018-04-06)
+
+
+### Features
+
+* **package:** add better default data merging ([4ef5227](https://github.com/matthiaskomarek/cosy/commit/4ef5227))
+
+
+
 <a name="0.8.1"></a>
 ## [0.8.1](https://github.com/matthiaskomarek/cosy/compare/v0.8.0...v0.8.1) (2018-04-06)
 
