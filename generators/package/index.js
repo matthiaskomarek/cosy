@@ -75,8 +75,8 @@ module.exports = class extends Generator {
         // split for template
         const newFile = file
           .split(this.templatePath() + '/')[1]
-          .replace(/_ComponentName/g, this.props.componentName);
-
+          .replace(/_ComponentName/g, this.props.componentName)
+          .replace(/\/_/g, '/');
 
         const destinationPath = path.join(this.destinationPath(), 'packages', newFile);
 
