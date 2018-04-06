@@ -6,7 +6,7 @@ import { cosyMeta } from './package.json';
 
 import Readme from './README.md';
 
-import { <%= componentName %> } from './index';
+import <%= componentName %> from './index';
 
 const stories = storiesOf(`${cosyMeta.type}|<%= componentName %>`, module)
   .addDecorator(withReadme(Readme))
