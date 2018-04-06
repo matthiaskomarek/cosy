@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "main": "./dist/<%= packageBundleName %>.umd.js",
   "module": "./dist/<%= packageBundleName %>.esm.js",
+  "es2015": "index.js",
   "scripts": {
     "build": "BABEL_ENV=build node ../../build.js",
     "prepublishOnly": "npm run build"
@@ -10,7 +11,9 @@
   "files": [
     "README.md",
     "package.json",
-    "dist/**"
+    "dist/**",
+    "index.js",
+    "component/**"
   ],
   "cosyMeta": {
     "defaultData": {

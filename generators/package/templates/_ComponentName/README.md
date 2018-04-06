@@ -1,5 +1,6 @@
 # <%= componentName %>
 
+**Type: <%= atomicType %>**
 
 ## Example Usage
 
