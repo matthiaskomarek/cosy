@@ -4,7 +4,8 @@ import {cosyMeta} from '../package.json';
 
 const <%= componentName %> = (props) => {
   // merge default data from package.json into props
-  props = Object.assign({}, cosyMeta.defaultData, props);
+  const {defaultData} = JSON.parse(JSON.stringify(cosyMeta));
+  props = Object.assign({}, defaultData, props);
 
   return (
     <div {...props}>{props.text}</div>
