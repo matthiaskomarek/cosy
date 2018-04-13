@@ -6,6 +6,6 @@ describe('<%= componentName %>', () => {
   it('should render', () => {
     const wrapper = mount(<<%= componentName %>/>);
 
-    expect(wrapper.find('div').length).toBe(1);
+    expect(wrapper.find('.<%= packageBundleName %>').length).toBe(1);
   });
 });
