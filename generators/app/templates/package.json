@@ -9,6 +9,8 @@
     "babel-core": "^6.26.0",
     "babel-jest": "^22.1.0",
     "css-loader": "^0.28.9",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "4.17.0",
     "eslint-plugin-react": "^7.6.1",
     "fs-extra": "^5.0.0",
@@ -42,6 +44,7 @@
     },
     "moduleNameMapper": {
       "^.*[.](jpe?g|gif|png|md)$": "<rootDir>/utils/jestIgnoreImportMock.js"
-    }
+    },
+    "setupFiles": ["<rootDir>/utils/setupTests.js"]
   }
 }
