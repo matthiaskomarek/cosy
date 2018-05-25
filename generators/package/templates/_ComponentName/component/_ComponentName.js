@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {cosyMeta} from '../package.json';
+import { cosyMeta } from '../package.json';
 
 const CSS_CLASS = Object.freeze({
   BASE: '<%= packageBundleName %>'
