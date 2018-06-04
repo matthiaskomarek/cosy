@@ -16,9 +16,6 @@
     "component/**"
   ],
   "cosyMeta": {
-    "defaultData": {
-      "text": "It works!"
-    },
     "type": "<%= atomicType %>"
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { cosyMeta } from '../package.json';
+import defaultComponentData from '../<%= componentName %>.data.json';
 
 const CSS_CLASS = Object.freeze({
   BASE: '<%= packageBundleName %>'
@@ -8,7 +8,7 @@ const CSS_CLASS = Object.freeze({
 
 const <%= componentName %> = (props) => {
   // merge default data from package.json into props
-  const {defaultData} = JSON.parse(JSON.stringify(cosyMeta));
+  const defaultData = JSON.parse(JSON.stringify(defaultComponentData));
   props = Object.assign({}, defaultData, props);
 
   const cssClasses = [CSS_CLASS.BASE];
