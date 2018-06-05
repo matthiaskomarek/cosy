@@ -1,3 +1,3 @@
-import './component/componentName.css';
+import './component/<%= componentName %>.css';
 
 export { default } from './component/<%= componentName %>';
