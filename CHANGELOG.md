@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.15.3"></a>
+## [0.15.3](https://github.com/matthiaskomarek/cosy/compare/v0.15.1...v0.15.3) (2018-06-06)
+
+
+### Bug Fixes
+
+* **package:** fix package generator for win paths ([7bd1730](https://github.com/matthiaskomarek/cosy/commit/7bd1730))
+
+
+
 <a name="0.15.1"></a>
 ## [0.15.1](https://github.com/matthiaskomarek/cosy/compare/v0.14.0...v0.15.1) (2018-06-05)
 
