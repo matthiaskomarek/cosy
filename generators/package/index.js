@@ -69,17 +69,20 @@ module.exports = class extends Generator {
   writing() {
     const options = {nodir: true};
 
-    glob(`${this.templatePath()}/**/*`, options, (er, files) => {
+    glob(path.join(this.templatePath(), '/**/*'), options, (er, files) => {
 
       files.forEach((file) => {
+        const templatePath = path.join(this.templatePath(), '/');
         // split for template
-        const newFile = file
-          .split(this.templatePath() + '/')[1]
+        // we have to use path.join here, because of different path separators on win and linux
+        const newFile = path
+          .join(file)
+          .split(templatePath)[1]
           .replace(/_ComponentName/g, this.props.componentName)
-          .replace(/\/_/g, '/');
+          .replace(/\/_/g, '/')
+          .replace(/\\_/g, '\\');
 
         const destinationPath = path.join(this.destinationPath(), 'packages', newFile);
-
 
         this.fs.copyTpl(file, destinationPath, this.props);
       });

@@ -34,9 +34,9 @@
 		"react-dom": "^16.2.0"
 	},
 	"scripts": {
-		"start": "NODE_ENV=development start-storybook -p 9008 -c .storybook",
+		"start": "set NODE_ENV=development && start-storybook -p 9008 -c .storybook",
     "storybook": "build-storybook -c .storybook -o .out",
-    "test": "NODE_ENV=test jest"
+    "test": "set NODE_ENV=test && jest"
 	},
   "jest": {
     "transform": {
