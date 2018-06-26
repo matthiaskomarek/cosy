@@ -3,6 +3,7 @@ const glob = require('glob');
 const path = require('path');
 const _ = require('lodash');
 const {removeScope} = require('remove-scope');
+const version = require('../../package').version;
 
 module.exports = class extends Generator {
   constructor(args, opts) {
@@ -14,6 +15,7 @@ module.exports = class extends Generator {
   initializing() {
     this.props = {};
     this.props.packageScope = _.get(this.config.getAll(), 'promptValues.packageScope', null);
+    this.log(`generator-cosy v${version}`);
   }
 
   prompting() {
@@ -52,7 +54,22 @@ module.exports = class extends Generator {
         name: 'atomicType',
         message: 'Atomic Design Stage',
         choices: ['Atom', 'Molecule', 'Organism', 'Template', 'Page']
-      }
+      },
+      {
+        type: 'confirm',
+        name: 'useProjectSwitch',
+        message: 'Would you like to use the "Project Switch" Add-on?'
+      },
+      {
+        when: (answers) => answers.useProjectSwitch,
+        type: 'checkbox',
+        name: 'allowedProjects',
+        message: 'Please select the allowed projects for your component',
+        choices: [
+          {name: 'zurich', value: 'zurich', checked: true},
+          {name: 'vita', value: 'vita', checked: true}
+        ]
+      },
       ])
       .then((answers) => {
         this.props.packageName = this.props.packageScope ?
@@ -63,6 +80,8 @@ module.exports = class extends Generator {
         // convert to snakecase
         this.props.packageBundleName = _.kebabCase(removeScope(answers.packageName));
         this.props.atomicType = answers.atomicType;
+        this.props.useProjectSwitch = answers.useProjectSwitch;
+        this.props.allowedProjects = JSON.stringify(answers.allowedProjects || []);
       });
   }
 

@@ -5,7 +5,9 @@
   "module": "./dist/<%= packageBundleName %>.esm.js",
   "es2015": "index.js",
   "scripts": {
-    "build": "set BABEL_ENV=build && node ../../build.js",
+    "stylelint": "stylelint './component/**/*.css'",
+    "prebuild": "npm run stylelint",
+    "build": "cross-env BABEL_ENV=build node ../../build.js",
     "prepublishOnly": "npm run build"
   },
   "files": [
@@ -16,6 +18,11 @@
     "component/**"
   ],
   "cosyMeta": {
+    <%_ if(useProjectSwitch){ _%>
+    "type": "<%= atomicType %>",
+    "projects": <%- allowedProjects %>
+    <%_ } else{ _%>
     "type": "<%= atomicType %>"
+    <%_ } _%>
   }
 }
