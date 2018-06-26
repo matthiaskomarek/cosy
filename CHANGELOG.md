@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.16.0"></a>
+# [0.16.0](https://github.com/matthiaskomarek/cosy/compare/v0.15.3...v0.16.0) (2018-06-26)
+
+
+### Features
+
+* **package:** add stylelint, use cross-env, use project-switch addon, use html addon ([ae131be](https://github.com/matthiaskomarek/cosy/commit/ae131be))
+
+
+
 <a name="0.15.3"></a>
 ## [0.15.3](https://github.com/matthiaskomarek/cosy/compare/v0.15.1...v0.15.3) (2018-06-06)
 

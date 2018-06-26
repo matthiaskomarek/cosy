@@ -1,6 +1,6 @@
 {
   "name": "generator-cosy",
-  "version": "0.15.3",
+  "version": "0.16.0",
   "description": "A yeoman generator for creating a frontend COmponent SYstem",
   "files": [
     "generators"
