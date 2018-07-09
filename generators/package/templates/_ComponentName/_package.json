@@ -5,8 +5,9 @@
   "module": "./dist/<%= packageBundleName %>.esm.js",
   "es2015": "index.js",
   "scripts": {
-    "stylelint": "stylelint './component/**/*.css'",
-    "prebuild": "npm run stylelint",
+    "lint:styles": "stylelint './component/**/*.css'",
+    "lint": "lint:styles",
+    "prebuild": "npm run lint",
     "build": "cross-env BABEL_ENV=build node ../../build.js",
     "prepublishOnly": "npm run build"
   },
