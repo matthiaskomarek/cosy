@@ -70,6 +70,12 @@ module.exports = class extends Generator {
           {name: 'vita', value: 'vita', checked: true}
         ]
       },
+      {
+        type: 'confirm',
+        name: 'useSeparateBundle',
+        message: 'Would you like to use a separate bundle file?'
+      },
+
       ])
       .then((answers) => {
         this.props.packageName = this.props.packageScope ?
@@ -82,11 +88,14 @@ module.exports = class extends Generator {
         this.props.atomicType = answers.atomicType;
         this.props.useProjectSwitch = answers.useProjectSwitch;
         this.props.allowedProjects = JSON.stringify(answers.allowedProjects || []);
+        this.props.useSeparateBundle = answers.useSeparateBundle;
       });
   }
 
   writing() {
     const options = {nodir: true};
+
+    const {useSeparateBundle} = this.props;
 
     glob(path.join(this.templatePath(), '/**/*'), options, (er, files) => {
 
@@ -103,7 +112,12 @@ module.exports = class extends Generator {
 
         const destinationPath = path.join(this.destinationPath(), 'packages', newFile);
 
-        this.fs.copyTpl(file, destinationPath, this.props);
+        if (
+          !file.endsWith('bundle.js')
+          || file.endsWith('bundle.js') && useSeparateBundle
+        ) {
+          this.fs.copyTpl(file, destinationPath, this.props);
+        }
       });
     });
   }
