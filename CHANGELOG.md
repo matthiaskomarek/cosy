@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.20.0"></a>
+# [0.20.0](https://github.com/matthiaskomarek/cosy/compare/v0.19.0...v0.20.0) (2019-03-29)
+
+
+### Features
+
+* **package:** add layout option, moves data file, adds c prefix to css ([f2996dc](https://github.com/matthiaskomarek/cosy/commit/f2996dc))
+
+
+
 <a name="0.19.0"></a>
 # [0.19.0](https://github.com/matthiaskomarek/cosy/compare/v0.18.1...v0.19.0) (2018-10-29)
 
