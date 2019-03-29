@@ -75,6 +75,11 @@ module.exports = class extends Generator {
         name: 'useSeparateBundle',
         message: 'Would you like to use a separate bundle file?'
       },
+      {
+        type: 'confirm',
+        name: 'useLayoutComponent',
+        message: 'Would you like to use the LayoutComponent?'
+      },
 
       ])
       .then((answers) => {
@@ -87,6 +92,7 @@ module.exports = class extends Generator {
         this.props.packageBundleName = _.kebabCase(removeScope(answers.packageName));
         this.props.atomicType = answers.atomicType;
         this.props.useProjectSwitch = answers.useProjectSwitch;
+        this.props.useLayoutComponent = answers.useLayoutComponent;
         this.props.allowedProjects = JSON.stringify(answers.allowedProjects || []);
         this.props.useSeparateBundle = answers.useSeparateBundle;
       });

@@ -1,24 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import defaultComponentData from '../<%= componentName %>.data.json';
+<%_ if(useLayoutComponent){ _%>
+
+import LayoutComponent from '@zurichversicherung/layout-component';
+<%_ } _%>
 
 const CSS_CLASS = Object.freeze({
-  BASE: '<%= packageBundleName %>'
+  BASE: 'c-<%= packageBundleName %>'
 });
 
-const <%= componentName %> = (props) => {
-  // merge default data from package.json into props
-  const defaultData = JSON.parse(JSON.stringify(defaultComponentData));
-  props = Object.assign({}, defaultData, props);
-
-  const cssClasses = [CSS_CLASS.BASE];
-
+const <%= componentName %> = props => {
+  const cssClasses = !props.customClass ? [CSS_CLASS.BASE] : [CSS_CLASS.BASE, props.customClass.trim()];
   return (
-    <div className={cssClasses.join(' ')} {...props}>{props.text}</div>
+    <%_ if(useLayoutComponent){ _%>
+    <LayoutComponent
+      customAttributes={props.customAttributes}
+      className={cssClasses.join(' ')}
+      {...customLayoutProps}
+    >
+      {props.text}
+    </LayoutComponent>
+    <%_ } else{ _%>
+    <div className={cssClasses.join(' ')} {...props.customAttributes}>{props.text}</div>
+    <%_ } _%>
   );
 };
 
 <%= componentName %>.propTypes = {
+  customAttributes: PropTypes.object,
+  customClass: PropTypes.string,
+  <%_ if(useLayoutComponent){ _%>
+  customLayoutProps: PropTypes.object,
+  <%_ } _%>
   text: PropTypes.string
 };
 

@@ -12,11 +12,11 @@
     "prepublishOnly": "npm run build"
   },
   "files": [
+    "CHANGELOG.md",
     "README.md",
     "package.json",
-    "dist/**",
-    "index.js",
-    "component/**"
+    "data/**",
+    "dist/**"
   ],
   "cosyMeta": {
     <%_ if(useProjectSwitch){ _%>
