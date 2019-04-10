@@ -15,8 +15,8 @@ const <%= componentName %> = props => {
     <%_ if(useLayoutComponent){ _%>
     <LayoutComponent
       customAttributes={props.customAttributes}
-      className={cssClasses.join(' ')}
-      {...customLayoutProps}
+      customClass={cssClasses.join(' ')}
+      {...props.customLayoutProps}
     >
       {props.text}
     </LayoutComponent>
