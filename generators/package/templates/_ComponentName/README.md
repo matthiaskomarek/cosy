@@ -1,6 +1,9 @@
 # <%= componentName %>
 
-**Type: <%= atomicType %>**
+|Package|Value|
+|---|---|
+|Name|[@zurichversicherung/<%= packageName %>](https://www.npmjs.com/package/<%= packageName %>)|
+|Type|<%= atomicType %>|
 
 ## Beschreibung
 
