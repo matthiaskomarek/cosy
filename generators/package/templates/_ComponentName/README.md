@@ -2,7 +2,7 @@
 
 |Package|Value|
 |---|---|
-|Name|[@zurichversicherung/<%= packageName %>](https://www.npmjs.com/package/@zurichversicherung/<%= packageName %>)|
+|Name|[@zurichversicherung/<%= packageName %>](https://www.npmjs.com/package/<%= packageName %>)|
 |Type|<%= atomicType %>|
 
 ## Beschreibung
