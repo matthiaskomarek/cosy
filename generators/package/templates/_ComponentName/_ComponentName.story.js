@@ -1,41 +1,50 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { withReadme } from 'storybook-readme';
-import { withInfo } from '@storybook/addon-info';
-import { cosyMeta } from './package.json';
+import React<%_ if(useSeparateBundle){ _%>, {Fragment}<%_ } _%> from 'react';
+import {storiesOf} from '@storybook/react';
+import {withReadme} from 'storybook-readme';
+import {cosyMeta} from './package.json';
 <%_ if(useLayoutComponent){ _%>
-import { select } from '@storybook/addon-knobs/react';
+import {select} from '@storybook/addon-knobs/react';
 <%_ } _%>
 import Readme from './README.md';
-import Guidelines from './GUIDELINES.md';
 <%_ if(useProjectSwitch){ _%>
 import withProjectSwitchDecorator from '../../addons/project-switch-addon';
 <%_ } _%>
+<%_ if(useSeparateBundle){ _%>
+import CallFunction from '../../addons/call-function';
+<%_ } _%>
 
 import <%= componentName %> from './index';
-import props from './data/<%= componentName %>.data.json';
+import defaultData from './data/default.json';
+<%_ if(useSeparateBundle){ _%>
+import <%= componentName %>ViewModel from './bundle';
+<%_ } _%>
 <%_ if(useLayoutComponent){ _%>
 import { layoutContext } from '@zurichversicherung/layout-component';
 <%_ } _%>
 
-const stories = storiesOf(`${cosyMeta.type}|<%= componentName %>`, module)
-  .addDecorator(withInfo())
+storiesOf(`${cosyMeta.type}|<%= componentName %>`, module)
   .addDecorator(withReadme(Readme))
   <%_ if(useProjectSwitch){ _%>
   .addDecorator(withProjectSwitchDecorator({projects: cosyMeta.projects}))
   <%_ } _%>
-  .addParameters({info: {Guidelines}});
-
-stories
-  .add('default', () => (
+  .add('with default', () => (
+    <%_ if(useSeparateBundle){ _%>
+    <Fragment>
+    <%_ } _%>
     <%_ if(useLayoutComponent){ _%>
     <<%= componentName %>
-      {...props}
+      {...defaultData}
       customLayoutProps={{
         context: select('Layout', layoutContext)
       }}
     />
     <%_ } else{ _%>
-    <<%= componentName %> {...props}/>
+    <<%= componentName %> {...defaultData}/>
+    <%_ } _%>
+    <%_ if(useSeparateBundle){ _%>
+      <CallFunction call={() => {
+        new <%= componentName %>ViewModel();
+      }} />
+    </Fragment>
     <%_ } _%>
   ));

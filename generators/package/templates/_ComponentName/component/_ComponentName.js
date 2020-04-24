@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 <%_ if(useLayoutComponent){ _%>
-
 import LayoutComponent from '@zurichversicherung/layout-component';
 <%_ } _%>
 
@@ -10,7 +9,7 @@ const CSS_CLASS = Object.freeze({
 });
 
 const <%= componentName %> = props => {
-  const cssClasses = !props.customClass ? [CSS_CLASS.BASE] : [CSS_CLASS.BASE, props.customClass.trim()];
+  const cssClasses = !props.customClass ? [CSS_CLASS.BASE] : [CSS_CLASS.BASE, props.customClass];
   return (
     <%_ if(useLayoutComponent){ _%>
     <LayoutComponent
