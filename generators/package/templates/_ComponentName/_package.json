@@ -8,13 +8,12 @@
     "lint:styles": "stylelint './component/**/*.css'",
     "lint": "npm run lint:styles",
     "prebuild": "npm run lint",
-    "build": "cross-env BABEL_ENV=build node ../../build.js",
+    "build": "cross-env BABEL_ENV=production ROLLUP_ENV=build node ../../build.js",
     "prepublishOnly": "npm run build"
   },
   "files": [
     "CHANGELOG.md",
     "README.md",
-    "package.json",
     "data/**",
     "dist/**"
   ],

@@ -121,6 +121,8 @@ module.exports = class extends Generator {
         if (
           !file.endsWith('bundle.js')
           || file.endsWith('bundle.js') && useSeparateBundle
+          || !file.endsWith('ViewModel.js')
+          || file.endsWith('ViewModel.js') && useSeparateBundle
         ) {
           this.fs.copyTpl(file, destinationPath, this.props);
         }
