@@ -17,7 +17,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "standard-version": "^4.3.0"
+    "standard-version": "^8.0.1"
   },
   "scripts": {
     "release": "standard-version"
